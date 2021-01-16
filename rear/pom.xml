@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.weboffice</groupId>
-    <artifactId>wps</artifactId>
+    <artifactId>rear</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>Project for Spring Boot</description>

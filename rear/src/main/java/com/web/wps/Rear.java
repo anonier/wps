@@ -7,7 +7,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 @SpringBootApplication
-public class Application {
+public class Rear {
 
     public static void main(String[] args) {
         // 防止xml xxE xxd 注入
@@ -28,7 +28,7 @@ public class Application {
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(Rear.class, args);
     }
 
 }
