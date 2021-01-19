@@ -6,11 +6,11 @@ import com.web.wps.base.BaseController;
 import com.web.wps.base.Response;
 import com.web.wps.logic.dto.FileReqDTO;
 import com.web.wps.logic.service.FileService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
@@ -22,12 +22,8 @@ import java.util.*;
 @RequestMapping("v1/3rd/file")
 public class FileCallBackController extends BaseController {
 
-    @Autowired
-    public FileCallBackController(FileService fileService) {
-        this.fileService = fileService;
-    }
-
-    private final FileService fileService;
+    @Resource
+    private FileService fileService;
 
     /**
      * 获取文件元数据

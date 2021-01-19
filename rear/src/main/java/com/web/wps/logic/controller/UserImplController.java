@@ -8,12 +8,12 @@ import com.web.wps.logic.entity.UserEntity;
 import com.web.wps.logic.service.FileService;
 import com.web.wps.logic.service.UserService;
 import com.web.wps.util.Token;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -24,14 +24,10 @@ import java.util.List;
 @RequestMapping("v1/api/file")
 public class UserImplController extends BaseController {
 
-    @Autowired
-    public UserImplController(FileService fileService, UserService userService) {
-        this.fileService = fileService;
-        this.userService = userService;
-    }
-
-    private final FileService fileService;
-    private final UserService userService;
+    @Resource
+    private FileService fileService;
+    @Resource
+    private UserService userService;
 
     /**
      * 获取网络文件预览URL

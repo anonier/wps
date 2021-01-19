@@ -3,9 +3,6 @@ package com.web.wps.logic.service;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.aliyun.oss.OSSClient;
-import com.aliyun.oss.model.GeneratePresignedUrlRequest;
-import com.aliyun.oss.model.GetObjectRequest;
 import com.web.wps.base.BaseRepository;
 import com.web.wps.base.BaseService;
 import com.web.wps.config.Context;
@@ -22,7 +19,6 @@ import com.web.wps.util.upload.qn.QNUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpHeaders;
 import org.springframework.beans.BeanUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -42,43 +38,29 @@ import java.util.*;
 @Slf4j
 public class FileService extends BaseService<FileEntity, String> {
 
-    private final WpsUtil wpsUtil;
-    private final WpsProperties wpsProperties;
-    private final OSSUtil ossUtil;
-    private final UserAclService userAclService;
-    private final WatermarkService watermarkService;
-    private final UserService userService;
-    private final FileVersionService fileVersionService;
-    private final RedirectProperties redirect;
-    private final QNUtil qnUtil;
-    private final UploadProperties uploadProperties;
-
-    @Value("${oss.bucket_name}")
-    private String bucketName;
-
-    @Value("${oss.disk_name}")
-    private String diskName;
-
-    @Autowired
-    public FileService(WpsUtil wpsUtil, WpsProperties wpsProperties, OSSUtil ossUtil,
-                       UserAclService userAclService, WatermarkService watermarkService,
-                       UserService userService, FileVersionService fileVersionService,
-                       RedirectProperties redirect, QNUtil qnUtil, UploadProperties uploadProperties) {
-        this.wpsUtil = wpsUtil;
-        this.wpsProperties = wpsProperties;
-        this.ossUtil = ossUtil;
-        this.userAclService = userAclService;
-        this.watermarkService = watermarkService;
-        this.userService = userService;
-        this.fileVersionService = fileVersionService;
-        this.redirect = redirect;
-        this.qnUtil = qnUtil;
-        this.uploadProperties = uploadProperties;
-    }
-
-    @Autowired
+    @Resource
+    private WpsUtil wpsUtil;
+    @Resource
+    private WpsProperties wpsProperties;
+    @Resource
+    private OSSUtil ossUtil;
+    @Resource
+    private UserAclService userAclService;
+    @Resource
+    private WatermarkService watermarkService;
+    @Resource
+    private UserService userService;
+    @Resource
+    private FileVersionService fileVersionService;
+    @Resource
+    private RedirectProperties redirect;
+    @Resource
+    private QNUtil qnUtil;
+    @Resource
+    private UploadProperties uploadProperties;
+    @Resource
     private ConvertProperties convertProperties;
-    @Autowired
+    @Resource
     private ServerProperties serverProperties;
 
     @Override
@@ -91,6 +73,11 @@ public class FileService extends BaseService<FileEntity, String> {
     public FileRepository getRepository() {
         return (FileRepository) this.baseRepository;
     }
+
+    @Value("${oss.bucket_name}")
+    private String bucketName;
+    @Value("${oss.disk_name}")
+    private String diskName;
 
     /**
      * 获取预览用URL

@@ -5,10 +5,10 @@ import com.alibaba.fastjson.JSONObject;
 import com.web.wps.base.BaseController;
 import com.web.wps.base.Response;
 import com.web.wps.logic.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.Resource;
 import java.util.Map;
 
 /**
@@ -19,12 +19,8 @@ import java.util.Map;
 @RequestMapping("v1/3rd/user")
 public class UserCallBackController extends BaseController {
 
-    @Autowired
-    public UserCallBackController(UserService cUserService) {
-        this.cUserService = cUserService;
-    }
-
-    private final UserService cUserService;
+    @Resource
+    private UserService userService;
 
     /**
      * 获取用户信息
@@ -36,7 +32,7 @@ public class UserCallBackController extends BaseController {
         logger.info("获取用户信息param:{}", JSON.toJSON(reqObj));
         try {
             Map<String, Object> map =
-                    cUserService.userInfo(reqObj);
+                    userService.userInfo(reqObj);
             return Response.success(map);
         } catch (Exception e) {
             return Response.bad("获取用户信息异常");
