@@ -9,7 +9,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 @SpringBootApplication
 @MapperScan("com.web.wps.*.mapper*")
-public class Anonier {
+public class Anonier_rear {
 
     public static void main(String[] args) {
         // 防止xml xxE xxd 注入
@@ -30,6 +30,6 @@ public class Anonier {
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
-        SpringApplication.run(Anonier.class, args);
+        SpringApplication.run(Anonier_rear.class, args);
     }
 }
