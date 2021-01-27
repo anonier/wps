@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.weboffice</groupId>
-    <artifactId>rear</artifactId>
+    <artifactId>mose_x_rear</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
     <description>Project for Spring Boot</description>
