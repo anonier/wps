@@ -7,7 +7,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
 @SpringBootApplication
-public class Rear {
+public class Mose_x_rear {
 
     public static void main(String[] args) {
         // 防止xml xxE xxd 注入
@@ -28,7 +28,6 @@ public class Rear {
         } catch (ParserConfigurationException e) {
             e.printStackTrace();
         }
-        SpringApplication.run(Rear.class, args);
+        SpringApplication.run(Mose_x_rear.class, args);
     }
-
 }
